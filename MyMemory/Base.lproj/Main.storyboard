@@ -12,7 +12,7 @@
         <scene sceneID="zZx-uH-daX">
             <objects>
                 <tableViewController id="O8s-tz-NLE" customClass="MemoListVC" customModule="MyMemory" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tVe-W3-MpN">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tVe-W3-MpN">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -47,12 +47,14 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1970-01-01 19:01:30" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IRa-cT-s77">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IRa-cT-s77">
                                             <rect key="frame" x="285.66666666666669" y="21" width="65" height="38"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="65" id="g8R-LO-2FN"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
+                                            <string key="text">1970-01-01
+19:01:30</string>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -69,6 +71,11 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="IRa-cT-s77" secondAttribute="trailing" id="wlw-Ia-EB7"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="contents" destination="nq1-9h-Snt" id="dWS-2F-oIo"/>
+                                    <outlet property="regdate" destination="IRa-cT-s77" id="nig-Os-QjD"/>
+                                    <outlet property="subject" destination="XS1-gc-bt2" id="hqT-di-C8a"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="memoCellWithImage" rowHeight="80" id="pQj-ZD-BLE" customClass="MemoCell" customModule="MyMemory" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="108" width="390" height="80"/>
@@ -108,7 +115,7 @@
                                             </constraints>
                                             <string key="text">1970-01-01
 19:01:30</string>
-                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -128,6 +135,12 @@
                                         <constraint firstItem="bSI-OM-MuR" firstAttribute="top" secondItem="1tc-7K-wvO" secondAttribute="topMargin" constant="10" id="yp0-6r-A7z"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="contents" destination="pqr-6L-uqd" id="ttW-Tb-2vE"/>
+                                    <outlet property="img" destination="Mto-c8-4CO" id="9pg-jU-bCq"/>
+                                    <outlet property="regdate" destination="bSI-OM-MuR" id="JGg-bS-Sqc"/>
+                                    <outlet property="subject" destination="ZIK-u9-N5g" id="4f9-hw-Bdm"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -188,10 +201,22 @@
                     </view>
                     <navigationItem key="navigationItem" title="메모 작성" id="aeu-cV-v3b">
                         <rightBarButtonItems>
-                            <barButtonItem title="Item" systemItem="camera" id="vtj-RI-0Bm"/>
-                            <barButtonItem title="저장" id="I78-XE-r0I"/>
+                            <barButtonItem title="Item" systemItem="camera" id="vtj-RI-0Bm">
+                                <connections>
+                                    <action selector="pick:" destination="1wc-mn-PB3" id="js2-x3-jgm"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="저장" id="I78-XE-r0I">
+                                <connections>
+                                    <action selector="save:" destination="1wc-mn-PB3" id="jef-dF-6gG"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="contents" destination="WkI-zn-w88" id="lKx-Or-kM5"/>
+                        <outlet property="preview" destination="VdU-SJ-6zy" id="Osn-7E-tSN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ug4-7v-XAp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
